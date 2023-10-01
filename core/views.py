@@ -16,11 +16,11 @@ def signUp(request):
             fname = form.cleaned_data['username']
             login(request, user)
             messages.success(request, f'Successfully added {fname}')
-            return redirect('home')
+            return redirect('login')
 
-  
-    form = SignUpForm()
+    form = SignUpForm(request.POST)
     return render(request, "core/signup.html", {'form':form})
 
 def logIn(request):
+    
     return render(request, "core/login.html")

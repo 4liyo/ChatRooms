@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'core',
+    'rooms',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +53,9 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'chatrooms.urls'
+LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/rooms/'
+LOGIN_URL = '/login/'
 
 TEMPLATES = [
     {

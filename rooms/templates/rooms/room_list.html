@@ -1,0 +1,44 @@
+{% include 'core/base.html' %}
+<h1 class="text-center text-dark mb-4">Rooms</h1>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rooms</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <style>
+    .card {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    {% if rooms %}
+        
+            <div class="row">
+                {% for room in rooms %}
+                <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                    <h5 class="card-title text-center mb-4 text-secondary">{{ room.name }}</h5>
+                    <a class="nav-link btn btn-outline-primary mt-5" href="{% url 'room_detail' room.slug %}">View Room</a>
+                    <!-- Additional card content -->
+                    </div>
+                </div>
+                </div>
+            
+        {% endfor %}
+    
+    {% else %}
+        <h4>No rooms available</h4>
+    {% endif %}
+
+  </div>
+  <!-- Bootstrap JS -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
