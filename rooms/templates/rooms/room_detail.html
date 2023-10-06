@@ -5,14 +5,19 @@
 </style>
 
 <div class="container col-7 mb-3" >
-<div class="m-4 card" style="width: 38rem;">
+<div class="m-4 card" style="width: 38rem;" id="chat-messages">
     <div class="card-header">
       <b>Room:</b> {{room.name}}
     </div>
-    <ul class="list-group list-group-flush" id="chat-messages">
+    <ul class="list-group list-group-flush">
+      {% if messages %}
       {% for m in messages %}
-        <li class="list-group-item"><b>{{ m.user.username|capfirst }}</b> <br> Message: {{ m.content }}</li>
+        <li class="list-group-item custom-li"><b>{{ m.user.username|capfirst }}</b> <br> Message: {{ m.content }}</li>
       {% endfor %}
+     
+      {% else %}
+        <h5 class='text-center p-4'>No messages</h5>
+      {% endif %}
     </ul>
   </div>
                   
@@ -65,6 +70,8 @@
   document.querySelector('#chat-message-input').onkeyup = function(e) {
       if (e.keyCode === 13) {
           document.querySelector('#chat-message-submit').click();
+          location.reload();
+
       }
   };
 
