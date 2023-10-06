@@ -25,10 +25,10 @@
           
 
 <div class="container col-4 mb-3">    
-  <form>
+  <form id="myForm" action="." method="POST">
       <div class="form-group">
           <label for="message"><b>Message</b>:</label>
-          <textarea class="form-control" id="chat-message-input" placeholder="Send a Message..." rows="3"></textarea>
+          <textarea class="form-control" id="chat-message-input" placeholder="Send a Message..." rows="3" name="message" required></textarea>
       </div>
       <button type="submit" class="btn btn-block btn-primary" id="chat-message-submit">Submit</button>
   </form>
@@ -38,6 +38,7 @@
   </div>
   {{ room.slug|json_script:"json-roomname" }}
   {{ request.user.username|json_script:"json-username" }}
+  
 <script>
     const roomName = JSON.parse(document.getElementById('json-roomname').textContent)
     const userName = JSON.parse(document.getElementById('json-username').textContent)
@@ -50,7 +51,7 @@
       console.log('onclose')
   }
 
-  chatSocket.onmessage = function(e) {
+  chatSocket.onmessage = function form_data(e) {
     const data = JSON.parse(e.data);
     if (data.message){
       document.querySelector('#chat-messages').innerHTML += (
@@ -60,19 +61,28 @@
          Message: ${data.message} 
         </div>`
       );
-    }
+      location.reload()
+    } else {
+      alert('The message was empty!')
+  }
 
-
-      scrollToBottom();
-  };
-
+  scrollToBottom();
+};
+ 
   document.querySelector('#chat-message-input').focus();
   document.querySelector('#chat-message-input').onkeyup = function(e) {
-      if (e.keyCode === 13) {
-          document.querySelector('#chat-message-submit').click();
-          location.reload();
+      if (e.keyCode === 13){
+        m_value = document.getElementById('chat-message-input')
+        f_value = m_value.value.trim()
 
-      }
+        if (f_value === "") {
+          alert('The message was empty!')
+        
+        }
+        else{
+          document.querySelector('#chat-message-submit').click();
+          location.reload()
+      } }
   };
 
     document.querySelector('#chat-message-submit').onclick = function(e) {
