@@ -4,15 +4,17 @@
 chat app - is an app with bidrectional communication between the client and server using websockets and django channels.
 
 # Main Features <br>
-  *Users can signup
-  
-  *Log In To view chat rooms
-  
-  *Join different chat rooms
-  
-  *View previous Chat history
-  
-  *Send chat messages
+  ## Users can;
+
+        *signup
+         
+         *Log In To view chat rooms
+         
+         *Join different chat rooms
+         
+         *View previous Chat history
+         
+         *Send chat messages
   
   
 ## Video <br>
