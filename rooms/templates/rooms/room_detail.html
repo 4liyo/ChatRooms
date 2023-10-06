@@ -4,7 +4,7 @@
  
 </style>
 
-<div class="container col-7 mb-3" >
+<div class="container col-6 mb-3" >
 <div class="m-4 card" style="width: 38rem;" id="chat-messages">
     <div class="card-header">
       <b>Room:</b> {{room.name}}
@@ -12,7 +12,7 @@
     <ul class="list-group list-group-flush">
       {% if messages %}
       {% for m in messages %}
-        <li class="list-group-item custom-li"><b>{{ m.user.username|capfirst }}</b> <br> Message: {{ m.content }}</li>
+        <li class="list-group-item custom-li mb-3 rounded-sm bg-dark text-light"><b>{{ m.user.username|capfirst }}</b> <br> Message: {{ m.content }}</li>
       {% endfor %}
      
       {% else %}
@@ -27,8 +27,8 @@
 <div class="container col-4 mb-3">    
   <form>
       <div class="form-group">
-          <label for="message">Message:</label>
-          <textarea class="form-control" id="chat-message-input" rows="3"></textarea>
+          <label for="message"><b>Message</b>:</label>
+          <textarea class="form-control" id="chat-message-input" placeholder="Send a Message..." rows="3"></textarea>
       </div>
       <button type="submit" class="btn btn-block btn-primary" id="chat-message-submit">Submit</button>
   </form>
