@@ -16,8 +16,10 @@
       {% endfor %}
      
       {% else %}
+
         <h5 class='text-center p-4'>No messages</h5>
       {% endif %}
+
     </ul>
   </div>
                   
@@ -61,6 +63,7 @@
          Message: ${data.message} 
         </div>`
       );
+      location.reload()
       
     } else {
       alert('The message was empty!')
