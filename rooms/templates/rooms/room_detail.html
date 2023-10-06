@@ -12,7 +12,7 @@
     <ul class="list-group list-group-flush">
       {% if messages %}
       {% for m in messages %}
-        <li class="list-group-item custom-li mb-3 rounded-sm bg-dark text-light"><b>{{ m.user.username|capfirst }}</b> <br> Message: {{ m.content }}</li>
+        <li class="list-group-item custom-li mb-3 rounded-sm bg-dark text-light"><b>{{ m.user.username }}</b> <br> Message: {{ m.content }}</li>
       {% endfor %}
      
       {% else %}
@@ -56,12 +56,12 @@
     if (data.message){
       document.querySelector('#chat-messages').innerHTML += (
         `
-        <div class='m-3'>
+        <div class="list-group-item custom-li mb-3 rounded-sm bg-dark text-light">
         <b>${data.username} </b><br>
          Message: ${data.message} 
         </div>`
       );
-      location.reload()
+      
     } else {
       alert('The message was empty!')
   }
@@ -80,8 +80,9 @@
         
         }
         else{
+          
           document.querySelector('#chat-message-submit').click();
-          location.reload()
+          
       } }
   };
 
