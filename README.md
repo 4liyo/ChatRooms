@@ -2,6 +2,7 @@
 chat app - is an app with bidrectional communication between the client and server using websockets and django channels.
 
 #Features
+
   *Users can signup
   *Log In To view chat rooms
   *Join different chat rooms
